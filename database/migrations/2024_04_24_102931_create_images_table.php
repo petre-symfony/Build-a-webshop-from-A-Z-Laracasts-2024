@@ -13,6 +13,7 @@ return new class extends Migration {
 		Schema::create('images', function (Blueprint $table) {
 			$table->id();
 			$table->foreignIdFor(Product::class);
+			$table->boolean('featured')->default(false);
 			$table->string('path');
 			$table->timestamps();
 		});
