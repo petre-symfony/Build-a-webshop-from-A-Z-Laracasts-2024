@@ -12,4 +12,8 @@ class Product extends Model {
 	public function variants(): HasMany {
 		return $this->hasMany(ProductVariant::class);
 	}
+
+	public function images(): HasMany {
+		return $this->hasMany(Image::class);
+	}
 }
