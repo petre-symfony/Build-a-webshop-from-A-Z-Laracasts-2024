@@ -20,7 +20,7 @@ class Product extends Component {
 	public function addToCart(AddProductVariantToCart $cart) {
 		$this->validate();
 
-		$cart->add();
+		$cart->add(variantId: $this->variant);
 	}
 
 	public function getProductProperty() {
