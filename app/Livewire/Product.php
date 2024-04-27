@@ -8,7 +8,11 @@ class Product extends Component {
 	public $productId;
 
 	public function mount() {
-		dd($this->productId);
+		
+	}
+
+	public function getProductProperty() {
+		return \App\Models\Product::findOrFail($this->productId);
 	}
 
 	public function render() {
