@@ -30,7 +30,11 @@
         @endforeach
       </select>
 
-      <x-button>Add To Cart</x-button>
+      @error('variant')
+        <div class="mt-2 text-red-600">{{ $message }}</div>
+      @enderror
+
+      <x-button wire:click="addToCart">Add To Cart</x-button>
     </div>
   </div>
 </div>
