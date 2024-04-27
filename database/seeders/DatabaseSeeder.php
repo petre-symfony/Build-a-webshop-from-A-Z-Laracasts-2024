@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Product;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
@@ -20,5 +21,9 @@ class DatabaseSeeder extends Seeder {
 				fn(Sequence $sequence) => ['featured' => $sequence->index === 0]
 			))
 			->create();
+
+		User::factory()->create([
+			'email' => 'phil@laracasts.com'
+		]);
 	}
 }
