@@ -19,5 +19,13 @@
     <div class="mt-5">
       {{ $this->product->description }}
     </div>
+
+    <div class="mt-4 spac-y-4">
+      <select class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-800">
+        @foreach($this->product->variants as $variant)
+          <option value="{{ $variant->id }}">{{ $variant->size }} / {{ $variant->color }}</option>
+        @endforeach
+      </select>
+    </div>
   </div>
 </div>
