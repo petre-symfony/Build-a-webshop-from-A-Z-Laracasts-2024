@@ -1,7 +1,10 @@
 <div class="grid grid-cols-2 gap-10 my-12">
-  <div class="space-y-4">
+  <div
+      class="space-y-4"
+      x-data="{ image: '/{{$this->product->image->path }}'}"
+  >
     <div class="bg-white p-5 rounded-lg shadow">
-      <img src="/{{ $this->product->image->path }}" alt="">
+      <img x-bind:src="image" alt="">
     </div>
 
     <div class="grid grid-cols-4 gap-4 my-4">
