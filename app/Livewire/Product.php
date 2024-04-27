@@ -5,8 +5,10 @@ namespace App\Livewire;
 use Livewire\Component;
 
 class Product extends Component {
-	public function mount($productId) {
-		dd($productId);
+	public $productId;
+
+	public function mount() {
+		dd($this->productId);
 	}
 
 	public function render() {
