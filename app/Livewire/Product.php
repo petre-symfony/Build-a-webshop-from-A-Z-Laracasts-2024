@@ -13,7 +13,7 @@ class Product extends Component {
 	];
 
 	public function mount() {
-		
+		$this->variant = $this->product->variants()->first()->id;
 	}
 
 	public function addToCart() {
