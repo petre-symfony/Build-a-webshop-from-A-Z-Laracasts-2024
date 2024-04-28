@@ -1,5 +1,5 @@
-<div class="grid grid-cols-4 mt-12">
-  <div class="bg-white rounded-lg shadow p-5">
+<div class="grid grid-cols-4 mt-12 gap-4">
+  <div class="bg-white rounded-lg shadow p-5 col-span-3">
     <table class="w-full">
       <thead>
         <tr>
@@ -46,7 +46,7 @@
     </table>
   </div>
 
-  <div class="bg-white rounded-lg shadow p-5">
+  <div class="bg-white rounded-lg shadow p-5 col-span-1">
     Hello
   </div>
 </div>
