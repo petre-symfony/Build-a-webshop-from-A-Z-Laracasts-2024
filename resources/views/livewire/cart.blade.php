@@ -1,5 +1,5 @@
-<div class="grid grid-cols-4">
-  <div class="bg-white rounded-lg shadow p-5 mt-12">
+<div class="grid grid-cols-4 mt-12">
+  <div class="bg-white rounded-lg shadow p-5">
     <table class="w-full">
       <thead>
         <tr>
@@ -44,5 +44,9 @@
         @endforeach
       </tbody>
     </table>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-5">
+    Hello
   </div>
 </div>
