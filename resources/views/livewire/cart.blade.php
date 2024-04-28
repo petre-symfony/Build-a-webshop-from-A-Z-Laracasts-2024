@@ -3,13 +3,17 @@
     <thead>
       <tr>
         <th class="text-left">Product</th>
+        <th class="text-left">Color</th>
+        <th class="text-left">Size</th>
         <th class="text-left">Quantity</th>
       </tr>
     </thead>
     <tbody>
       @foreach($this->items as $item)
       <tr>
-        <td>{{ $item->product->name }} Size: {{ $item->variant->size }} Color: {{ $item->variant->color }}</td>
+        <td>{{ $item->product->name }}</td>
+        <td>{{ $item->variant->color }}</td>
+        <td>{{ $item->variant->size }}</td>
         <td class="flex items-center">
           <button wire:click="decrement({{ $item->id }})" @disabled($item->quantity === 1)>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
