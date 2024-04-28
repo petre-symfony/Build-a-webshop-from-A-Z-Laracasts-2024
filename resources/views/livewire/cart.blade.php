@@ -4,17 +4,19 @@
       <thead>
         <tr>
           <th class="text-left">Product</th>
+          <th class="text-left">Price</th>
           <th class="text-left">Color</th>
           <th class="text-left">Size</th>
           <th class="text-left">Quantity</th>
           <th class="text-left">Total</th>
-          <th class="text-left"></th>
+          <th> &nbsp;</th>
         </tr>
       </thead>
       <tbody>
         @foreach($this->items as $item)
         <tr>
           <td>{{ $item->product->name }}</td>
+          <td>{{ $item->product->price }}</td>
           <td>{{ $item->variant->color }}</td>
           <td>{{ $item->variant->size }}</td>
           <td class="flex items-center">
@@ -46,6 +48,13 @@
         </tr>
         @endforeach
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" class="text-right font-medium">Total</td>
+          <td class="font-medium">{{ $this->cart->total }}</td>
+          <td></td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 
