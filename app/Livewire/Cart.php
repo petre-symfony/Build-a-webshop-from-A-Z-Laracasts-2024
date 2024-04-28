@@ -10,6 +10,14 @@ class Cart extends Component {
 		return CartFactory::make()->items;
 	}
 
+	public function increment($itemId) {
+		CartFactory::make()->items()->find($itemId)?->increment('quantity');
+	}
+
+	public function decrement($itemId) {
+		CartFactory::make()->items()->find($itemId)?->decrement('quantity');
+	}
+
 	public function delete($itemId) {
 		CartFactory::make()->items()->where('id', $itemId)->delete();
 
