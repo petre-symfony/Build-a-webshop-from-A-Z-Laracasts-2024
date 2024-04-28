@@ -47,6 +47,12 @@
   </div>
 
   <div class="bg-white rounded-lg shadow p-5 col-span-1">
-    Hello
+    @guest
+      <p>Please <a href="{{ route('register') }}" class="underline">register</a> or <a href="{{ route('login') }}" class="underline">login</a> to continue</p>
+    @endguest
+
+    @auth
+      <x-button wire:click="checkout">Checkout</x-button>
+    @endauth
   </div>
 </div>
