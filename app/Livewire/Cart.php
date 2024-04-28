@@ -6,6 +6,12 @@ use App\Factories\CartFactory;
 use Livewire\Component;
 
 class Cart extends Component {
+	protected $listeners = [
+		'productDecrementedFromCart' => '$refresh',
+		'productIncrementedFromCart' => '$refresh',
+		'productRemovedFromCart' => '$refresh'
+	];
+
 	public function getCartProperty() {
 		return CartFactory::make()->loadMissing(['items', 'items.product', 'items.variant']);
 	}
@@ -16,6 +22,8 @@ class Cart extends Component {
 
 	public function increment($itemId) {
 		$this->cart->items()->find($itemId)?->increment('quantity');
+
+		$this->dispatch('productIncrementedFromCart');
 	}
 
 	public function decrement($itemId) {
@@ -23,6 +31,8 @@ class Cart extends Component {
 
 		if ($item->quantity > 1) {
 			$item->decrement('quantity');
+
+			$this->dispatch('productDecrementedFromCart');
 		}
 	}
 
