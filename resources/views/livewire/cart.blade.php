@@ -7,6 +7,8 @@
           <th class="text-left">Color</th>
           <th class="text-left">Size</th>
           <th class="text-left">Quantity</th>
+          <th class="text-left">Total</th>
+          <th class="text-left"></th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +34,7 @@
 
             </button>
           </td>
+          <td>{{ $item->subtotal }}</td>
           <td>
             <button wire:click="delete({{ $item->id }})">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
