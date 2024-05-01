@@ -16,6 +16,9 @@ class CreateStripeCheckoutSession {
 				],
 				'shipping_address_collection' => [
 					'allowed_countries' => ['US', 'NL', 'RO']
+				],
+				'metadata' => [
+					'user_id' => $cart->user->id
 				]
 			]
 		);
