@@ -21,6 +21,7 @@ class CreateStripeCheckoutSession {
 					'unit_amount' => $item->product->price->getAmount(),
 					'product_data' => [
 						'name' => $item->product->name,
+						'description' => "Size: {$item->variant->size} - Color: {$item->variant->color}",
 						'metadata' => [
 							'product_id' => $item->product->id,
 							'product_variant_id' => $item->product_variant_id
