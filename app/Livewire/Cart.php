@@ -13,22 +13,7 @@ class Cart extends Component {
 	];
 
 	public function checkout() {
-		return auth()->user()->checkout([
-			 [
-					'price_data' => [
-					'currency' => 'USD',
-					'unit_amount' => 100,
-					'product_data' => [
-						'name' => 'My product',
-						'metadata' => [
-							'product_id' => 1,
-							'product_variant_id' => 1
-						]
-					]
-				],
-				'quantity' => 2,
-			 ]
-		]);
+		return auth()->user()->checkout();
 	}
 
 	public function getCartProperty() {
