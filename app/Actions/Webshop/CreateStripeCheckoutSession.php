@@ -14,22 +14,21 @@ class CreateStripeCheckoutSession {
 	}
 
 	private function formatCartItems(Collection $items) {
-		return $items->map(function (CartItem $item) {});
-		//[
-		//	[
-		//		'price_data' => [
-		//			'currency' => 'USD',
-		//			'unit_amount' => 100,
-		//			'product_data' => [
-		//				'name' => 'My product',
-		//				'metadata' => [
-		//					'product_id' => 1,
-		//					'product_variant_id' => 1
-		//				]
-		//			]
-		//		],
-		//		'quantity' => 2,
-		//	]
-		//]
+		return $items->loadMissing(['product'])->map(function (CartItem $item) {
+			return [
+				'price_data' => [
+					'currency' => 'USD',
+					'unit_amount' => $item->product->price->getAmount(),
+					'product_data' => [
+						'name' => $item->product->name,
+						'metadata' => [
+							'product_id' => $item->product->id,
+							'product_variant_id' => $item->product_variant_id
+						]
+					]
+				],
+				'quantity' => $item->quantity
+			];
+		})->toArray();
 	}
 }
