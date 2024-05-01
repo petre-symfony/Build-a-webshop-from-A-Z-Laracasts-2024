@@ -15,6 +15,14 @@ return new class extends Migration {
 			$table->id();
 			$table->foreignIdFor(Order::class);
 			$table->foreignIdFor(ProductVariant::class);
+			$table->string('name');
+			$table->string('description');
+			$table->unsignedInteger('price');
+			$table->unsignedInteger('quantity');
+			$table->unsignedInteger('amount_discount');
+			$table->unsignedInteger('amount_subtotal');
+			$table->unsignedInteger('amount_tax');
+			$table->unsignedInteger('amount_total');
 			$table->timestamps();
 		});
 	}
