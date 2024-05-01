@@ -2,8 +2,10 @@
 
 namespace App\Actions\Webshop;
 
+use App\Models\OrderItem;
 use App\Models\User;
 use Laravel\Cashier\Cashier;
+use Stripe\LineItem;
 
 class HandleCheckoutSessionCompleted {
 	public function handle($sessionId) {
@@ -36,5 +38,25 @@ class HandleCheckoutSessionCompleted {
 				'state' => $session->shipping_details->address->state
 			]
 		]);
+
+		$lineItems = Cashier::stripe()->checkout->sessions->allLineItems($session->id);
+
+		$orderItems = collect($lineItems->all())->map(function (LineItem $line) {
+			$product = Cashier::stripe()->products->retrieve($line->price->product);
+
+			return new OrderItem([
+				'product_variant_id' => $product->metadata->product_variant_id,
+				'name' => $product->name,
+				'description' => $product->description,
+				'price' => $line->price->unit_amount,
+				'quantity' => $line->quantity,
+				'amount_discount' => $line->amount_discount,
+				'amount_subtotal' => $line->amount_subtotal,
+				'amount_tax' => $line->amount_tax,
+				'amount__total' => $line->amount_total
+			]);
+		});
+
+		$order->items()->saveMany($orderItems);
 	}
 }
