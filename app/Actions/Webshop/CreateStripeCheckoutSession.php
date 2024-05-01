@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CreateStripeCheckoutSession {
 	public function createFromCart(Cart $cart) {
-		return $cart->user->checkout(
+		return $cart->user->allowPromotionCodes()->checkout(
 			$this->formatCartItems($cart->items)
 		);
 	}
