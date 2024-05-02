@@ -1,13 +1,8 @@
 @component('mail::message')
-  <p>
-    Hey {{ $order->user->name }}
-  </p>
+  Hey {{ $order->user->name }}
 
-  <p>
-    Thank you for your order. You find all the details below
-  </p>
-
-  <table>
+  Thank you for your order. You find all the details below
+  <table style="width: 100%">
   <thead>
     <tr>
       <th>Item</th>
