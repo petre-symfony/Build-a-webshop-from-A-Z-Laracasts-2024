@@ -48,9 +48,9 @@
         @endforeach
       </tbody>
       <tfoot>
-        @if($order->amount_shipping>0)
+        @if($order->amount_shipping->isPositive())
           <tr>
-            <td>
+            <td colspan="4" style="text-align: right">
               Shipping Costs
             </td>
             <td>
@@ -58,40 +58,40 @@
             </td>
           </tr>
         @endif
-        @if($order->amount_discount>0)
+        @if($order->amount_discount->isPositive())
           <tr>
-            <td>
-              Amount Discount
+            <td colspan="4" style="text-align: right">
+              Discount
             </td>
             <td>
               {{ $order->amount_discount }}
             </td>
           </tr>
         @endif
-        @if($order->amount_tax>0)
+        @if($order->amount_tax->isPositive())
           <tr>
-            <td>
-              Amount Tax
+            <td colspan="4" style="text-align: right">
+              Tax
             </td>
             <td>
               {{ $order->amount_tax }}
             </td>
           </tr>
         @endif
-        @if($order->amount_subtotal>0)
+        @if($order->amount_subtotal->isPositive())
           <tr>
-            <td>
-              Amount Subtotal
+            <td colspan="4" style="text-align: right">
+              Subtotal
             </td>
             <td>
               {{ $order->amount_subtotal }}
             </td>
           </tr>
         @endif
-        @if($order->amount_total>0)
+        @if($order->amount_total->isPositive())
           <tr>
-            <td>
-              Amount Total
+            <td colspan="4" style="text-align: right">
+              Total
             </td>
             <td>
               {{ $order->amount_total }}
