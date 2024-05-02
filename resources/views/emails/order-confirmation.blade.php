@@ -21,4 +21,7 @@
     |||| **Subtotal** | {{ $order->amount_subtotal }} |
     |||| **Total** | {{ $order->amount_total }} |
   @endcomponent
+  @component('mail::button', ['url' => '', 'color' => 'success'])
+    View Order
+  @endcomponent
 @endcomponent
