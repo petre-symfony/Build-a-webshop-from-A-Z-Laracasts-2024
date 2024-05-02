@@ -12,7 +12,7 @@ class CheckoutStatus extends Component {
 	}
 
 	public function getOrderProperty() {
-		return auth()->user()->orders()->where('stripe_checkout_session_id', $this->sessionId);
+		return auth()->user()->orders()->where('stripe_checkout_session_id', $this->sessionId)->first();
 	}
 
 	public function render() {
