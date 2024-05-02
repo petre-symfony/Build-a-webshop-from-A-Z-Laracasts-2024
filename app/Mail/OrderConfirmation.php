@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -15,8 +16,8 @@ class OrderConfirmation extends Mailable {
 	/**
 	 * Create a new message instance.
 	 */
-	public function __construct() {
-		//
+	public function __construct(private Order $order) {
+
 	}
 
 	/**
@@ -24,7 +25,7 @@ class OrderConfirmation extends Mailable {
 	 */
 	public function envelope(): Envelope {
 		return new Envelope(
-			subject: 'Order Confirmation',
+			subject: 'Order Confirmation #{$this->>order->id}',
 		);
 	}
 
@@ -33,7 +34,7 @@ class OrderConfirmation extends Mailable {
 	 */
 	public function content(): Content {
 		return new Content(
-			view: 'view.name',
+			view: 'emails.order-confirmation',
 		);
 	}
 
