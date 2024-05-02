@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\MoneyCast;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,13 +13,9 @@ use Money\Money;
 class Product extends Model {
 	use HasFactory;
 
-	protected function price():Attribute {
-		return Attribute::make(
-			get: function (int $value) {
-				return new Money($value, new \Money\Currency('USD'));
-			}
-		);
-	}
+	protected $casts = [
+		'price' => MoneyCast::class
+	];
 
 	public function variants(): HasMany {
 		return $this->hasMany(ProductVariant::class);
