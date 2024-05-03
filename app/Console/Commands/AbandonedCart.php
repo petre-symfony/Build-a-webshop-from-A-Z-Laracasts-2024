@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\AbandonedCartReminder;
 use App\Models\Cart;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class AbandonedCart extends Command {
 	/**
@@ -24,8 +26,10 @@ class AbandonedCart extends Command {
 	 * Execute the console command.
 	 */
 	public function handle() {
-		$this->info(
-			Cart::whereHas('user')->whereDate('updated_at', today()->subDay())->count()
-		);
+		$carts = Cart::whereHas('user')->whereDate('updated_at', today()->subDay())->get();
+
+		foreach ($carts as $cart) {
+			Mail::to($cart->user)->send(new AbandonedCartReminder($cart));
+		}
 	}
 }
