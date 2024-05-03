@@ -22,11 +22,30 @@
       @endforeach
       </tbody>
       <tfoot>
-      <tr>
-        <td colspan="2" class="text-right font-medium">Total</td>
-        <td class="font-medium text-right">{{ $this->order->amount_total }}</td>
-        <td></td>
-      </tr>
+        @if($this->order->amount_shipping->isPositive())
+          <tr>
+            <td colspan="2" class="text-right font-medium">Shipping</td>
+            <td class="font-medium text-right">{{ $this->order->amount_shipping }}</td>
+          </tr>
+        @endif
+        @if($this->order->amount_discount->isPositive())
+          <tr>
+            <td colspan="2" class="text-right font-medium">Discount</td>
+            <td class="font-medium text-right">{{ $this->order->amount_discount }}</td>
+          </tr>
+        @endif
+        <tr>
+          <td colspan="2" class="text-right font-medium">Tax</td>
+          <td class="font-medium text-right">{{ $this->order->amount_tax }}</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-right font-medium">Subtotal</td>
+          <td class="font-medium text-right">{{ $this->order->amount_subtotal }}</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-right font-medium">Total</td>
+          <td class="font-medium text-right">{{ $this->order->amount_total }}</td>
+        </tr>
       </tfoot>
     </table>
   </x-panel>
