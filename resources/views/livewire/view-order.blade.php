@@ -50,11 +50,15 @@
     </table>
   </x-panel>
 
-  <x-panel class="col-span-1">
-    {{ $orderId }}
+  <x-panel class="col-span-1" title="Billing Information">
+    @foreach($this->order->billing_address->filter() as $value)
+      {{ $value }} <br>
+    @endforeach
   </x-panel>
 
-  <x-panel class="col-span-1">
-    {{ $orderId }}
+  <x-panel class="col-span-1" title="Shipping Information">
+    @foreach($this->order->shipping_address->filter() as $value)
+      {{ $value }} <br>
+    @endforeach
   </x-panel>
 </div>
