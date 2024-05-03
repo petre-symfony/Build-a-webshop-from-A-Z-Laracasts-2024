@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Cart;
 use Illuminate\Console\Command;
 
 class RemoveInactivateSessionCarts extends Command {
@@ -17,12 +18,12 @@ class RemoveInactivateSessionCarts extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description';
+	protected $description = 'Remove inactive session based cart';
 
 	/**
 	 * Execute the console command.
 	 */
 	public function handle() {
-		//
+		$this->info(Cart::whereDoesntHave('user')->whereDate('created_at', '*', now()->subDay(1))->count());
 	}
 }
