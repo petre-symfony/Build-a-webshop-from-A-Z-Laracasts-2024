@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use App\Models\Product;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class StoreFront extends Component {
+	#[Url]
 	public $keywords;
 
 	#[Computed]
