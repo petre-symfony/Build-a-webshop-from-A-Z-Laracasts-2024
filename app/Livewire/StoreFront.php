@@ -7,9 +7,13 @@ use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class StoreFront extends Component {
+	public $keywords;
+
 	#[Computed]
 	public function products() {
-		return Product::query()->paginate(5);
+		return Product::query()
+			->when($this->keywords, fn($query) => $query->where('name', 'like', "%{$this->keywords}%"))
+			->paginate(5);
 	}
 
 	public function render() {

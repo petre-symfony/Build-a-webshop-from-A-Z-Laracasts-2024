@@ -2,7 +2,7 @@
   <div class="flex justify-between">
     <h1 class="text-xl font-medium">Our Products</h1>
     <div>
-      <x-input wire:model="query" type="search" placeholder="Enter Keyword" />
+      <x-input wire:model.live.debounce="keywords" type="search" placeholder="Enter Keyword" />
     </div>
   </div>
   <div class="grid grid-cols-4 gap-4 mt-12">
