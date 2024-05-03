@@ -1,6 +1,13 @@
-<div class="grid grid-cols-2">
-  <x-panel class="mt-12">
+<div class="grid grid-cols-2 gap-4">
+  <x-panel class="mt-12 col-span-2" title="Your Order #{{ $this->order->id }}">
     {{ $orderId }}
-    {{-- Care about people's approval and you will be their prisoner. --}}
+  </x-panel>
+
+  <x-panel class="col-span-1">
+    {{ $orderId }}
+  </x-panel>
+
+  <x-panel class="col-span-1">
+    {{ $orderId }}
   </x-panel>
 </div>
