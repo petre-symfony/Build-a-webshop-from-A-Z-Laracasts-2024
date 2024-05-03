@@ -9,7 +9,7 @@ use Livewire\Component;
 class StoreFront extends Component {
 	#[Computed]
 	public function products() {
-		return Product::query()->paginate(1);
+		return Product::query()->paginate(5);
 	}
 
 	public function render() {
