@@ -24,6 +24,11 @@ class RemoveInactivateSessionCarts extends Command {
 	 * Execute the console command.
 	 */
 	public function handle() {
-		$this->info(Cart::whereDoesntHave('user')->whereDate('created_at', '*', now()->subDay(1))->count());
+		$carts = Cart::whereDoesntHave('user')->whereDate('created_at', '*', now()->subDay(1))->get();
+
+		foreach ($carts as $cart) {
+			$cart->items()->delete();
+			$cart->delete();
+		}
 	}
 }
