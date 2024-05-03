@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Cart;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -15,7 +16,7 @@ class AbandonedCartReminder extends Mailable {
 	/**
 	 * Create a new message instance.
 	 */
-	public function __construct() {
+	public function __construct(public Cart $cart) {
 		//
 	}
 
@@ -24,7 +25,7 @@ class AbandonedCartReminder extends Mailable {
 	 */
 	public function envelope(): Envelope {
 		return new Envelope(
-			subject: 'Abandoned Cart Reminder',
+			subject: 'You still have items in your cart',
 		);
 	}
 
@@ -33,7 +34,7 @@ class AbandonedCartReminder extends Mailable {
 	 */
 	public function content(): Content {
 		return new Content(
-			view: 'view.name',
+			markdown: 'emails.abandoned-cart-reminder',
 		);
 	}
 
