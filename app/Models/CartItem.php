@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 class CartItem extends Model {
 	use HasFactory;
 
+	protected $touches = ['cart'];
+
 	public function subtotal(): Attribute {
 		return Attribute::make(
 			get: function () {
@@ -18,7 +20,11 @@ class CartItem extends Model {
 			}
 		);
 	}
-	
+
+	public function cart(): BelongsTo {
+		return $this->belongsTo(Cart::class);
+	}
+
 	public function product(): HasOneThrough {
 		return $this->hasOneThrough(
 			Product::class,
