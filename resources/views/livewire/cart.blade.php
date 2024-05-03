@@ -64,7 +64,7 @@
       @endguest
 
       @auth
-        <x-button wire:click="checkout">Checkout</x-button>
+        <x-button wire:click="checkout" class="w-full justify-center">Checkout</x-button>
       @endauth
     </x-panel>
   </div>
